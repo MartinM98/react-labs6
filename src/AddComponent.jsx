@@ -66,7 +66,7 @@ SubmitClick()
     email: this.state.email,
   }),
 }).then(()=>this.setState({submitFlag:false}))
-this.props.SubmitHandler();
+.then(()=>this.props.SubmitHandler());
 
 }
 render()
