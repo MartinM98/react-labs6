@@ -10,13 +10,15 @@ this.state={
     name:null,
     company:null,
     email:null,
-    submitFlag:false
+    submitFlag:false,
+    id:null
 }
 this.isActiveHandler=this.isActiveHandler.bind(this);
 this.ageHandler=this.ageHandler.bind(this);
 this.nameHandler=this.nameHandler.bind(this);
 this.companyHandler=this.companyHandler.bind(this);
 this.emailHandler=this.emailHandler.bind(this);
+this.idHandler=this.idHandler.bind(this);
 this.SubmitClick=this.SubmitClick.bind(this);
 }
 
@@ -49,6 +51,11 @@ emailHandler(ev)
     this.setState({email:ev.target.value})
 }
 
+idHandler(ev)
+{
+    this.setState({id:ev.target.value})
+}
+
 SubmitClick()
 {
     this.setState({submitFlag:true})
@@ -66,9 +73,19 @@ SubmitClick()
     email: this.state.email,
   }),
 }).then(()=>this.setState({submitFlag:false}))
-.then(()=>this.props.SubmitHandler());
-
+.then(()=>this.props.Handler());
 }
+
+deleteEmpolyee()
+{
+    fetch('https://example.com/delete-item/', {
+  method: 'DELETE',
+  headers: {'content-type': 'application/json'},
+  body: JSON.stringify({id:this.state.id})
+})
+.then(()=>this.props.Handler());
+}
+
 render()
 {
 
@@ -93,6 +110,12 @@ render()
         <br/>
         <button onClick={this.SubmitClick}>Submit</button>
         <button onClick={this.props.CancelProps}>Cancel</button>
+        <br/>
+        <br/>
+        <input onChange={this.idHandler}/>
+        <br/>
+        <button onClick={this.deleteEmpolyee}>Delete</button>
+
     </div>
     <label hidden={!this.state.submitFlag}>Saving...</label>
     </div>

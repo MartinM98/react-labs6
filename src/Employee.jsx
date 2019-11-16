@@ -8,6 +8,9 @@ function Employee(props){
             <p>Name: {props.data.name}</p>
             <p>Company: {props.data.company}</p>
             <p>Email: {props.data.email}</p>
+            <br/>
+            <br/>
+            <br/>
         </div>
     )
 }

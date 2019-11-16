@@ -9,7 +9,8 @@ super(props);
 this.state={
     employees:[],
     flag:true,
-    addFlag:false
+    addFlag:false,
+    deleteFlag:false
 }
     this.AddButtonClick=this.AddButtonClick.bind(this);
     this.ComponentCancelProps=this.ComponentCancelProps.bind(this);
@@ -17,7 +18,7 @@ this.state={
 }
 componentDidMount()
 {
-
+this.setState({flag:true});
 fetch('http://localhost:3004/employees')
 .then(results=>results.json())
 .then(data=>this.setState({employees:data}))
@@ -35,6 +36,7 @@ ComponentCancelProps()
     this.setState({addFlag:false});
 }
 
+
 render()
 {
 
@@ -42,8 +44,8 @@ render()
     <div>
         <label>{this.state.flag?"Loading...":""}</label>
         {!this.state.flag&&!this.state.addFlag? <button onClick={this.AddButtonClick}>Add employee</button>: null}
-        {!this.state.flag&&this.state.addFlag? <AddComponent SubmitHandler={this.componentDidMount} CancelProps={this.ComponentCancelProps} /> : null}
-        <EmployeesList employees={this.state.employees}/>
+        {!this.state.flag&&this.state.addFlag? <AddComponent Handler={this.componentDidMount} CancelProps={this.ComponentCancelProps} /> : null}
+        <EmployeesList delete={this.state.deleteFlag} employees={this.state.employees}/>
     </div>
     )
 
