@@ -51,7 +51,7 @@ emailHandler(ev)
 
 SubmitClick()
 {
-    this.setState({submitFlag:true});
+    this.setState({submitFlag:true})
     fetch('http://localhost:3004/employees', {
   method: 'POST',
   headers: {
@@ -65,9 +65,9 @@ SubmitClick()
     company: this.state.company,
     email: this.state.email,
   }),
-})
+}).then(()=>this.setState({submitFlag:false}))
 this.props.SubmitHandler();
-this.setState({submitFlag:false})
+
 }
 render()
 {

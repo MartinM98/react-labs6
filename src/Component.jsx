@@ -21,7 +21,6 @@ fetch('http://localhost:3004/employees')
 .then(results=>results.json())
 .then(data=>this.setState({employees:data}))
 .then(()=>this.setState({flag:false}));
-console.log('Reloaded');
 
 }
 
