@@ -12,6 +12,7 @@ this.state={
 }
     this.AddButtonClick=this.AddButtonClick.bind(this);
     this.ComponentCancelProps=this.ComponentCancelProps.bind(this);
+    this.componentDidMount=this.componentDidMount.bind(this);
 }
 componentDidMount()
 {
@@ -20,6 +21,7 @@ fetch('http://localhost:3004/employees')
 .then(results=>results.json())
 .then(data=>this.setState({employees:data}))
 .then(()=>this.setState({flag:false}));
+console.log('Reloaded');
 
 }
 
@@ -40,7 +42,8 @@ render()
     <div>
         <label>{this.state.flag?"Loading...":""}</label>
         {!this.state.flag&&!this.state.addFlag? <button onClick={this.AddButtonClick}>Add employee</button>: null}
-        {!this.state.flag&&this.state.addFlag? <AddComponent CancelProps={this.ComponentCancelProps} /> : null}
+        {!this.state.flag&&this.state.addFlag? <AddComponent SubmitHandler={this.componentDidMount} CancelProps={this.ComponentCancelProps} /> : null}
+
     </div>
     )
 
