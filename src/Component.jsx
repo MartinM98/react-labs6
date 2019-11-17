@@ -15,6 +15,7 @@ this.state={
     this.AddButtonClick=this.AddButtonClick.bind(this);
     this.ComponentCancelProps=this.ComponentCancelProps.bind(this);
     this.componentDidMount=this.componentDidMount.bind(this);
+    this.delete=this.delete.bind(this);
 }
 componentDidMount()
 {
@@ -35,7 +36,17 @@ ComponentCancelProps()
 {
     this.setState({addFlag:false});
 }
-
+delete()
+{
+this.setState({deleteFlag:true});
+    fetch('http://localhost:3004/employees/'+this.state.employees[this.state.employees.length-1].id, {
+  method: 'DELETE',
+  headers: {'content-type': 'application/json'},
+  body: JSON.stringify({id:this.state.id})
+})
+.then(()=>this.setState({deleteFlag:false}))
+.then(this.componentDidMount)
+}
 
 render()
 {
@@ -43,9 +54,11 @@ render()
    return(
     <div>
         <label>{this.state.flag?"Loading...":""}</label>
-        {!this.state.flag&&!this.state.addFlag? <button onClick={this.AddButtonClick}>Add employee</button>: null}
-        {!this.state.flag&&this.state.addFlag? <AddComponent Handler={this.componentDidMount} CancelProps={this.ComponentCancelProps} /> : null}
-        <EmployeesList delete={this.state.deleteFlag} employees={this.state.employees}/>
+        <label>{this.state.deleteFlag?"Deleting...":""}</label>
+        {!this.state.deleteFlag&!this.state.flag&&!this.state.addFlag? <button onClick={this.AddButtonClick}>Add employee</button>: null}
+        {!this.state.deleteFlag&!this.state.flag&&this.state.addFlag? <AddComponent Handler={this.componentDidMount} CancelProps={this.ComponentCancelProps} /> : null}
+        {!this.state.deleteFlag&!this.state.flag?<EmployeesList employees={this.state.employees}/>:""}
+        {!this.state.deleteFlag&!this.state.flag?  <button onClick={this.delete}>Delete last employee</button>:""}
     </div>
     )
 

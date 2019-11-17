@@ -76,15 +76,6 @@ SubmitClick()
 .then(()=>this.props.Handler());
 }
 
-deleteEmpolyee()
-{
-    fetch('https://example.com/delete-item/', {
-  method: 'DELETE',
-  headers: {'content-type': 'application/json'},
-  body: JSON.stringify({id:this.state.id})
-})
-.then(()=>this.props.Handler());
-}
 
 render()
 {
@@ -112,9 +103,6 @@ render()
         <button onClick={this.props.CancelProps}>Cancel</button>
         <br/>
         <br/>
-        <input onChange={this.idHandler}/>
-        <br/>
-        <button onClick={this.deleteEmpolyee}>Delete</button>
 
     </div>
     <label hidden={!this.state.submitFlag}>Saving...</label>
