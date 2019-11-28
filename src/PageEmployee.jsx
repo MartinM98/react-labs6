@@ -1,5 +1,5 @@
 import React from 'react'
-class AddComponent extends React.Component
+class PageEmployee extends React.Component
 {    
 constructor(props)
 {
@@ -112,4 +112,4 @@ render()
 }
 }
 
-export default AddComponent
+export default PageEmployee

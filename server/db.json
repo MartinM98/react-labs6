@@ -79,30 +79,6 @@
       "name": "Mcdonald Hubbard",
       "company": "PAPRICUT",
       "email": "mcdonaldhubbard@papricut.com"
-    },
-    {
-      "id": "5dc9bdc6d54eb99cb821fb5f",
-      "isActive": false,
-      "age": 24,
-      "name": "Joyce West",
-      "company": "FANFARE",
-      "email": "joycewest@fanfare.com"
-    },
-    {
-      "id": "5dc9bdc64424815d04e10c50",
-      "isActive": true,
-      "age": 27,
-      "name": "Bettie Banks",
-      "company": "NSPIRE",
-      "email": "bettiebanks@nspire.com"
-    },
-    {
-      "id": "5dc9bdc68e268a789771e9da",
-      "isActive": false,
-      "age": 30,
-      "name": "Trudy Bauer",
-      "company": "COMTEXT",
-      "email": "trudybauer@comtext.com"
     }
   ]
 }

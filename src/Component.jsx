@@ -1,6 +1,6 @@
 import React from 'react'
-import AddComponent from './AddComponent'
-import EmployeesList from './EmployeesList';
+import PageEmployee from './PageEmployee'
+import PageEmployeesList from './PageEmployeesList';
 class Component extends React.Component
 {    
 constructor(props)
@@ -56,8 +56,8 @@ render()
         <label>{this.state.flag?"Loading...":""}</label>
         <label>{this.state.deleteFlag?"Deleting...":""}</label>
         {!this.state.deleteFlag&!this.state.flag&&!this.state.addFlag? <button onClick={this.AddButtonClick}>Add employee</button>: null}
-        {!this.state.deleteFlag&!this.state.flag&&this.state.addFlag? <AddComponent Handler={this.componentDidMount} CancelProps={this.ComponentCancelProps} /> : null}
-        {!this.state.deleteFlag&!this.state.flag?<EmployeesList employees={this.state.employees}/>:""}
+        {!this.state.deleteFlag&!this.state.flag&&this.state.addFlag? <PageEmployee Handler={this.componentDidMount} CancelProps={this.ComponentCancelProps} /> : null}
+        {!this.state.deleteFlag&!this.state.flag?<PageEmployeesList employees={this.state.employees}/>:""}
         {!this.state.deleteFlag&!this.state.flag?  <button onClick={this.delete}>Delete last employee</button>:""}
     </div>
     )
