@@ -9,8 +9,6 @@ function Employee(props){
             <p>Company: {props.data.company}</p>
             <p>Email: {props.data.email}</p>
             <br/>
-            <br/>
-            <br/>
             
         </div>
     )

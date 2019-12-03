@@ -1,4 +1,6 @@
 import React from 'react'
+import { withRouter} from "react-router-dom";
+
 class PageEmployee extends React.Component
 {    
 constructor(props)
@@ -10,8 +12,7 @@ this.state={
     name:null,
     company:null,
     email:null,
-    submitFlag:false,
-    id:null
+
 }
 this.isActiveHandler=this.isActiveHandler.bind(this);
 this.ageHandler=this.ageHandler.bind(this);
@@ -58,22 +59,7 @@ idHandler(ev)
 
 SubmitClick()
 {
-    this.setState({submitFlag:true})
-    fetch('http://localhost:3004/employees', {
-  method: 'POST',
-  headers: {
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    isActive: this.state.isActive,
-    age: this.state.age,
-    name: this.state.name,
-    company: this.state.company,
-    email: this.state.email,
-  }),
-}).then(()=>this.setState({submitFlag:false}))
-.then(()=>this.props.Handler());
+ 
 }
 
 
@@ -82,7 +68,6 @@ render()
 
    return(
        <div>
-    <div hidden={this.state.submitFlag}>
         <br/>
         <label>isActive: </label><input value="coding" type="checkbox" onChange={this.isActiveHandler}/>
         <br/>
@@ -100,16 +85,13 @@ render()
         <br/>
         <br/>
         <button onClick={this.SubmitClick}>Submit</button>
-        <button onClick={this.props.CancelProps}>Cancel</button>
         <br/>
         <br/>
 
-    </div>
-    <label hidden={!this.state.submitFlag}>Saving...</label>
     </div>
     )
 
 }
 }
 
-export default PageEmployee
+export default withRouter(PageEmployee)
