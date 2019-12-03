@@ -1,6 +1,6 @@
 import React from 'react'
 import PageEmployeesList from './PageEmployeesList';
-import { withRouter} from "react-router-dom";
+import { withRouter, Link} from "react-router-dom";
 class Component extends React.Component
 {    
 constructor(props)
@@ -29,6 +29,9 @@ render()
    return(
     <div>
         <PageEmployeesList employees={this.state.employees}/>
+        <Link to="/new">
+        <button>Create new employee</button>
+        </Link>
     </div>
     )
 
