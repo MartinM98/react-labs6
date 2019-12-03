@@ -59,7 +59,20 @@ idHandler(ev)
 
 SubmitClick()
 {
- 
+ fetch('http://localhost:3004/employees', {
+    method: 'POST',
+    headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify( {
+        "isActive": this.state.isActive,
+        "age": this.state.age,
+        "name": this.state.name,
+        "company": this.state.company,
+        "email": this.state.email
+      }),
+}).then(() => this.props.history.push("/"));
 }
 
 
